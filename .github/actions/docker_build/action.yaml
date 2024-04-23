@@ -1,5 +1,5 @@
 name: action
-description: Create a custom action:v1
+description: Create a custom action
 inputs:
   path_dockerfile:
     description: "Path to the Dockerfile"
@@ -12,6 +12,7 @@ inputs:
     description: "Tag to be added to the final image"
     required: false
     default: ""
+  
 runs:
   using: composite
   steps:
@@ -30,3 +31,4 @@ runs:
         docker build . --file ${{ inputs.path_dockerfile }} --tag $NAME
         echo "DOCKER_IMAGE_NAME=$NAME" >> $GITHUB_ENV
       shell: bash
+      

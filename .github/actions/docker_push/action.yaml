@@ -1,0 +1,22 @@
+name: action push
+description: Create a action push
+inputs:
+  docker_username:
+    description: "Docker Username"
+    required: true
+  image_name:
+    description: "Name for the generated Docker image"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Tag and Push Docker image
+      run: |
+        DOCKER_USERNAME="${{ inputs.docker_username }}"
+        IMAGE_NAME="${{ inputs.image_name }}"
+        TAG=$(date +%s)
+        DOCKER_IMAGE="$DOCKER_USERNAME/$IMAGE_NAME:$TAG"
+        docker tag $IMAGE_NAME $DOCKER_IMAGE
+        docker push $DOCKER_IMAGE
+      shell: bash
