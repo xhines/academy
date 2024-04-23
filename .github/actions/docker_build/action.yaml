@@ -8,6 +8,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: |
-        echo "Hello World"
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag academy:$(date +%s)
       shell: bash
