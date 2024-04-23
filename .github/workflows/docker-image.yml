@@ -17,8 +17,6 @@ jobs:
     - name: Build Docker image
       uses: xhines/academy/.github/actions/docker_build@main
       with:
-        path_dockerfile: ${{ github.workspace }}/${{ inputs.path_dockerfile }}
-        image_name: exercicio2
         tag_name: latest 
 
     - name: List Docker images
