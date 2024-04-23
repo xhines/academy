@@ -15,8 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: xhines/academy/.github/actions/docker_build@action
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag academy:$(date +%s)
 
     - name: List the docker image
       run: docker images
